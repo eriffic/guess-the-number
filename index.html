@@ -8,19 +8,39 @@
 </head>
 <body>
   <script>
-    //let num = Math.floor(Math.random() * 11);
-
     // Returns a random integer from 1 to 10:
     let num = Math.floor(Math.random() * 10) + 1;
 
     let guess = prompt("Guess a number between 1 and 10");
 
-    if(num == guess)
-    {
-        alert("Got it!");
-    }else{
-        alert("Sorry!  You guessed " + guess + " and the number was " + num);
+    let gotIt = false;//starts the loops
+
+    let counter = 0;//will keep track of how many guesses
+
+    let feedback = "";//will store feedback for user
+
+    let timeTimes= "times";//handles the plural of time/times
+    
+    while(gotIt == false){
+      counter++;//increment counter
+      if(num == guess){//got it!
+        // alert("Got it!");
+        gotIt = true;//break out of the loop
+      }else if(num > guess){//higher!
+        // alert("higher!")
+        guess = prompt("higher!");
+      }else{//lower!
+        // alert("lower!")
+        guess = prompt("lower!");
+      }
     }
+    if(counter == 1){
+      timeTimes = "time";//switch to singular
+    }
+
+    //alert("Sorry!  You guessed " + guess + " and the number was " + num);
+    feedback = "Great job! The number was " + num + " and you guessed " + counter + " " + timeTimes;
+    alert(feedback);
   </script>
   
 </body>
